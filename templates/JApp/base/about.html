@@ -1,0 +1,17 @@
+{% extends 'JApp/base/base_site.html' %}
+{% load i18n %}
+{% block title %}{% translate 'About' %}{% endblock %}
+{% block main %}
+    <div class="container pt-4">
+        <div class="container-fluid">
+            <h1 class="display-1">
+                {% translate 'Welcome to About page' %}
+            </h1>
+            <p class="col-md-8 lead fs-4">
+                {% blocktranslate %}
+                    You can use this template to create about page.
+                {% endblocktranslate %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load i18n %}
+<nav class="navbar navbar-{{ color|default:'dark' }} bg-{{ bg_color|default:'primary' }} navbar-expand-{{ expand_at|default:'lg' }} align-items-lg-start h-100 rounded-3"
+     aria-label="Panel">
+    <div class="container-fluid flex-lg-column align-items-lg-start h-100 w-100 justify-content-start gap-4">
+        <button class="navbar-toggler rounded-circle p-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#panel" aria-controls="panel">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand me-0" href="#">
+            {% translate 'Page Content' %}
+        </a>
+        <div class="offcanvas offcanvas-end text-white bg-{{ bg_color|default:'primary' }} w-100" tabindex="-1"
+             id="panel"
+             aria-labelledby="panelLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="panelLabel">
+                    {% translate 'On this page' %}
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column justify-content-between h-100">
+                <ul class="navbar-nav flex-lg-column w-100">
+                    {% block page_content %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                {% translate 'Introduction' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                {% translate 'Getting Started' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                {% translate 'Models' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                {% translate 'Views' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                {% translate 'Examples' %}
+                            </a>
+                        </li>
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+{% extends 'JApp/base/base_site.html' %}
+{% load i18n %}
+{% block title %}{% translate 'Contact' %}{% endblock %}
+{% block main %}
+    <div class="container pt-4">
+        <div class="container-fluid">
+            <h1 class="display-1">
+                {% translate 'Welcome to contact page' %}
+            </h1>
+            <p class="col-md-8 lead fs-4">
+                {% blocktranslate %}
+                    You can use this to create contact page.
+                {% endblocktranslate %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

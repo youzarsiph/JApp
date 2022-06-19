@@ -1,0 +1,126 @@
+{% load i18n %}
+<nav class="navbar navbar-{{ color|default:'dark' }} bg-{{ bg_color|default:'primary' }} navbar-expand-{{ expand_at|default:'lg' }} align-items-lg-start h-100 rounded-3"
+     aria-label="Side bar">
+    <div class="container-fluid flex-lg-column align-items-lg-start h-100 w-100">
+        <button class="navbar-toggler rounded-circle p-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar"
+                aria-controls="sidebar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand me-0" href="#">
+            {% translate 'Dashboard' %}
+        </a>
+        <div class="navbar-nav d-lg-none">
+            <a class="nav-link px-3 p-lg-2{% if request.path == profile %} active{% endif %}"
+               href="{% url 'JApp:profile' %}">
+                <i class="bi bi-person-circle"></i>
+            </a>
+        </div>
+        <div class="offcanvas offcanvas-end text-white bg-{{ bg_color|default:'primary' }}" tabindex="-1" id="sidebar"
+             aria-labelledby="sidebarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="sidebarLabel">
+                    {% translate 'Dashboard' %}
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column justify-content-between h-100">
+                <ul class="navbar-nav flex-lg-column w-100">
+                    <li class="nav-item">
+                        {% url 'JApp:dashboard' as dashboard %}
+                        <a class="nav-link d-flex gap-4{% if request.path == dashboard %} active{% endif %}"
+                           href="{{ dashboard }}">
+                            <i class="bi bi-gear-fill"></i>
+                            {% translate 'Dashboard' %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex gap-4" href="#">
+                            <i class="bi bi-link"></i>
+                            {% translate 'Link' %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex gap-4 disabled" href="#" aria-disabled="true">
+                            <i class="bi bi-slash-circle-fill"></i>
+                            {% translate 'Disabled' %}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        {% url 'JApp:profile' as profile %}
+                        <a class="nav-link d-flex gap-4{% if request.path == profile %} active{% endif %}"
+                           href="{{ profile }}">
+                            <i class="bi bi-person-circle"></i>
+                            {% translate 'Account' %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex gap-4" href="{% url 'JApp:logout' %}">
+                            <i class="bi bi-power"></i>
+                            {% translate 'Log out' %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{# Collapse navbar #}
+{% comment %}
+<nav class="navbar navbar-{{ color|default:'dark' }} bg-{{ bg_color|default:'primary' }} navbar-expand-{{ expand_at|default:'lg' }} align-items-lg-start h-100 rounded-3">
+    <div class="container flex-lg-column align-items-lg-start h-100 w-100">
+        <button class="navbar-toggler rounded-circle p-2" data-bs-toggle="collapse" data-bs-target="#sidebar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand me-0" href="#">
+            {% translate 'Dashboard' %}
+        </a>
+        <ul class="navbar-nav flex-row flex-lg-column order-lg-last mt-lg-auto w-lg-100">
+            <li class="nav-item">
+                {% url 'JApp:profile' as profile %}
+                <a class="nav-link d-flex gap-4 px-3 p-lg-2{% if request.path == profile %} active{% endif %}"
+                   href="{{ profile }}">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="d-none d-lg-inline">
+                        {% translate 'Account' %}
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item d-none d-lg-block">
+                <a class="nav-link d-flex gap-4" href="{% url 'JApp:logout' %}">
+                    <i class="bi bi-power"></i>
+                    {% translate 'Log out' %}
+                </a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse mb-auto align-items-lg-start w-100" id="sidebar">
+            <ul class="navbar-nav flex-lg-column w-100">
+                <li class="nav-item">
+                    {% url 'JApp:dashboard' as dashboard %}
+                    <a class="nav-link d-flex gap-4{% if request.path == dashboard %} active{% endif %}"
+                       href="{{ dashboard }}">
+                        <i class="bi bi-house"></i>
+                        {% translate 'Home' %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex gap-4" href="#">
+                        <i class="bi bi-link"></i>
+                        {% translate 'Link' %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex gap-4" href="#">
+                        <i class="bi bi-slash"></i>
+                        {% translate 'Disabled' %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endcomment %}

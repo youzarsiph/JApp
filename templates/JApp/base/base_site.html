@@ -1,0 +1,16 @@
+{# Base template for structuring the HTML and extending. #}
+{% extends 'JApp/base/base.html' %}
+{% load i18n %}
+{% block header %}
+    {# Navbar here #}
+    {% include 'JApp/includes/components/navbar.html' %}
+{% endblock %}
+{% block main %}
+    {# Content here. #}
+    <div class="container pt-4">
+        {% if messages %}
+            {% include 'JApp/includes/components/messages.html' %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

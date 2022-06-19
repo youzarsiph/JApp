@@ -1,0 +1,33 @@
+{% extends 'JApp/base/dashboard.html' %}
+{% load i18n %}
+{% block title %}{% translate 'Create ' %}{% endblock %}
+{% block breadcrumb %}
+    {% block breadcrumb_item %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'blog:post_list' %}">
+                <i class="bi bi-list"></i>
+                {% translate 'Posts' %}
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'blog:post_detail' post.id %}">
+                <i class="bi bi-eye"></i>
+                {{ post.title }}
+            </a>
+        </li>
+    {% endblock %}
+    <li class="breadcrumb-item active">
+        <i class="bi bi-pencil"></i>
+        {% translate 'Edit' %}
+    </li>
+{% endblock %}
+{% block content %}
+    <h1 class="display-1">
+        {% block page_title %}{% translate 'Create' %}{% endblock %}
+    </h1>
+    {% block urls %}
+        {# Define the cancel_url and delete_url here #}
+    {% endblock %}
+    {% include 'JApp/includes/utilties/form.html' with form_tag=1 method='post' floating_labels=1 %}
+    {% include 'JApp/includes/utilties/save_submit.html' with reset=1 delete=1 cancel_url=url delete_url=uri %}
+{% endblock %}

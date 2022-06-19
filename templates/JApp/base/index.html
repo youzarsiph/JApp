@@ -1,0 +1,79 @@
+{% extends 'JApp/base/base_site.html' %}
+{% load i18n %}
+{% block title %}{% translate 'Home' %}{% endblock %}
+{% block main %}
+    <div class="container pt-4">
+        <div class="container-fluid">
+            <h1 class="display-1">
+                {% translate 'JApp' %}
+            </h1>
+            <h2>
+                {% translate 'How I write Django apps' %}
+            </h2>
+            <p class="lead fs-4">
+                {% blocktranslate %}
+                    JApp is a convention that I follow to build Django apps faster. It is like a template for building
+                    Django apps, it includes templates to build the UI, customized views, custom mixins to use with
+                    views, custom authentication templates, and more.
+                {% endblocktranslate %}
+            </p>
+        </div>
+    </div>
+    <div class="container px-4 py-5">
+        <h2 class="pb-2 border-bottom">
+            {% translate 'Features' %}
+        </h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="col d-flex align-items-start gap-4">
+                <div class="bg-primary text-white py-2 px-3 rounded-3">
+                    <i class="bi bi-boxes fs-3"></i>
+                </div>
+                <div>
+                    <h2>
+                        {% translate 'Class Based' %}
+                    </h2>
+                    <p>
+                        {% blocktranslate %}
+                            JApp follows the <abbr title="Don't Repeat Yourself">DRY</abbr> principle, so it's
+                            primarily based on classes and mixins.
+                        {% endblocktranslate %}
+                    </p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start gap-4">
+                <div class="bg-primary text-white py-2 px-3 rounded-3">
+                    <i class="bi bi-bootstrap fs-3"></i>
+                </div>
+                <div>
+                    <h2>
+                        {% translate 'Fully responsive' %}
+                    </h2>
+                    <p>
+                        {% blocktranslate %}
+                            JApp is built using the most popular CSS framework: Bootstrap.
+                        {% endblocktranslate %}
+                    </p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start gap-4">
+                <div class="bg-primary text-white py-2 px-3 rounded-3">
+                    <i class="bi bi-plugin fs-3"></i>
+                </div>
+                <div>
+                    <h2>
+                        {% translate 'Reusable' %}
+                    </h2>
+                    <p>
+                        {% blocktranslate %}
+                            Use it as you want.
+                            <abbr title="Plug and Play">P&amp;P</abbr>
+                        {% endblocktranslate %}
+                    </p>
+                    <a class="btn btn-lg btn-primary" href="https://github.com/youzarsiph/JApp#readme">
+                        {% translate 'Get started!' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

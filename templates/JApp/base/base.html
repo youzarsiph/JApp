@@ -1,0 +1,38 @@
+{# Base template for using as a starting point. #}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# CSS here. #}
+    {# <link rel="stylesheet" href="{% static 'JApp/node_modules/bootstrap/dist/css/bootstrap.css' %}"> #}
+    {# <link rel="stylesheet" href="{% static 'JApp/node_modules/bootstrap-icons/font/bootstrap-icons.css' %}"> #}
+    {# CSS only #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'JApp/styles.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body {% block body_attrs %}{% endblock %}>
+<header class="p-1">
+    {# Navbar here. #}
+    {% block header %}{% endblock %}
+</header>
+<main>
+    {# Content here. #}
+    {% block main %}{% endblock %}
+</main>
+<footer>
+    {# Footer here. #}
+    {% block footer %}{% endblock %}
+</footer>
+{# Scripts here. #}
+{# <script src="{% static 'JApp/node_modules/@popperjs/core/dist/umd/popper.js' %}"></script> #}
+{# <script src="{% static 'JApp/node_modules/bootstrap/dist/js/bootstrap.js' %}"></script> #}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+</html>
