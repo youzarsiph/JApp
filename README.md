@@ -126,7 +126,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title
 
 ```
@@ -138,6 +138,20 @@ This is the model that we will be working with.
 In this section we are going to write our views. We are going to implement CRUD views.
 
 ### Create View
+
+To style the form we need to create a class in `blog/forms/create.py`:
+
+```python
+from blog.forms.base import StyledModelForm
+from blog.models import Post
+
+
+class PostCreationForm(StyledModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'about', 'content', 'image')
+
+```
 
 Here is the code for `blog/views/create.py`:
 
