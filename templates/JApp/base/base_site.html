@@ -7,10 +7,10 @@
 {% endblock %}
 {% block main %}
     {# Content here. #}
-    <div class="container pt-4">
+    <section class="container pt-4">
         {% if messages %}
             {% include 'JApp/includes/components/messages.html' %}
         {% endif %}
         {% block content %}{% endblock %}
-    </div>
+    </section>
 {% endblock %}
