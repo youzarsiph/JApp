@@ -27,9 +27,7 @@ class MessageMixinCreateView(MessageMixin):
             messages.success(request, self.success_message)
             return response
         except Exception as error:
-            message = str(error) if settings.DEBUG else ''
-            messages.error(request, message if settings.DEBUG else self.error_message, extra_tags=('danger',))
-            return redirect(request.path)
+            raise error
 
 
 class MessageMixinUpdateView(MessageMixin):
@@ -87,7 +85,7 @@ class RequestUser(UserPassesTestMixin):
         return self.request.user == self.get_object()
 
 
-class SuperUserMixin(UserPassesTestMixin):
+class SuperUserRequiredMixin(UserPassesTestMixin):
     """
     Verify that the current user is superuser.
     """
@@ -96,7 +94,7 @@ class SuperUserMixin(UserPassesTestMixin):
         return self.request.user.is_superuser
 
 
-class StaffUserMixin(UserPassesTestMixin):
+class StaffUserRequiredMixin(UserPassesTestMixin):
     """
     Verify that the current user is staff.
     """

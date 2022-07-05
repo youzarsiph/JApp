@@ -12,9 +12,6 @@
     <h1 class="display-1">
         {% block page_title %}{% translate 'Create' %}{% endblock %}
     </h1>
-    {% block urls %}
-        {# Define the cancel_url and delete_url here #}
-    {% endblock %}
     {% include 'JApp/includes/utilties/form.html' with form_tag=1 method='post' floating_labels=1 %}
     {% include 'JApp/includes/utilties/submit.html' with reset=1 cancel_url=url %}
 {% endblock %}

@@ -1,7 +1,8 @@
 {% load i18n %}
 {# Include with form_tag=1 #}
 {% if form_tag %}
-    <form method="{{ method|default:'get' }}" action="{{ action|default:request.path }}" id="{{ id|default:'form' }}">
+    <form method="{{ method|default:'get' }}" action="{{ action|default:request.path }}" id="{{ id|default:'form' }}"
+            {% if enctype_multipart %}enctype="multipart/form-data"{% endif %}>
 {% endif %}
 
 {# Included with CSRF_TOKEN #}
@@ -39,7 +40,9 @@
         {% if floating_labels %}
             {% if field.widget_type == 'clearablefile' %}
                 <div class="form-group mb-4">
-                    {{ field.label_tag }}
+                    <div class="form-label">
+                        {{ field.label_tag }}
+                    </div>
                     {{ field }}
                     {% if field.help_text %}
                         <small class="text-muted">{{ field.help_text|safe }}</small>

@@ -1,5 +1,5 @@
 {% load i18n %}
-<nav class="navbar navbar-{{ color|default:'dark' }} bg-{{ bg_color|default:'primary' }} navbar-expand-{{ expand_at|default:'lg' }} p-3 rounded-3">
+<nav class="navbar navbar-{{ color|default:'dark' }} bg-{{ bg_color|default:'primary' }} navbar-expand-{{ expand_at|default:'lg' }} p-3 rounded-3 shadow">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'JApp:index' %}">
             {% translate 'JApp' %}

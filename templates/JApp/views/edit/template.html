@@ -2,20 +2,7 @@
 {% load i18n %}
 {% block title %}{% translate 'Create ' %}{% endblock %}
 {% block breadcrumb %}
-    {% block breadcrumb_item %}
-        <li class="breadcrumb-item">
-            <a href="{% url 'blog:post_list' %}">
-                <i class="bi bi-list"></i>
-                {% translate 'Posts' %}
-            </a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{% url 'blog:post_detail' post.id %}">
-                <i class="bi bi-eye"></i>
-                {{ post.title }}
-            </a>
-        </li>
-    {% endblock %}
+    {% block breadcrumb_item %}{% endblock %}
     <li class="breadcrumb-item active">
         <i class="bi bi-pencil"></i>
         {% translate 'Edit' %}

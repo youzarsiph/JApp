@@ -5,18 +5,18 @@
             <button type="submit" class="btn btn-lg btn-primary d-flex align-items-center gap-4"
                     form="{{ form_id|default:'form' }}">
                 <i class="bi bi-check-lg"></i>
-                {% translate 'Submit' %}
+                {{ submit_btn_text|default:'Submit' }}
             </button>
             {% if reset %}
                 <button type="reset" class="btn btn-lg btn-warning d-flex align-items-center gap-4"
                         form="{{ form_id|default:'form' }}">
                     <i class="bi bi-backspace-reverse"></i>
-                    {% translate 'Reset' %}
+                    {{ reset_btn_text|default:'Reset' }}
                 </button>
             {% endif %}
             <a href="{{ cancel_url|default:'#' }}" class="btn btn-lg btn-secondary d-flex align-items-center gap-4">
                 <i class="bi bi-x"></i>
-                {% translate 'Cancel' %}
+                {{ cancel_btn_text|default:'Cancel' }}
             </a>
         </div>
     </div>

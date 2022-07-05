@@ -1,3 +1,4 @@
+from JApp.models import *
 from JApp.forms.base import StyledModelForm
 from django.contrib.auth.views import get_user_model
 
