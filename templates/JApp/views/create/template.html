@@ -13,5 +13,7 @@
         {% block page_title %}{% translate 'Create' %}{% endblock %}
     </h1>
     {% include 'JApp/includes/utilties/form.html' with form_tag=1 method='post' floating_labels=1 %}
-    {% include 'JApp/includes/utilties/submit.html' with reset=1 cancel_url=url %}
+    {% block submit %}
+        {% include 'JApp/includes/utilties/submit.html' with reset=1 %}
+    {% endblock %}
 {% endblock %}

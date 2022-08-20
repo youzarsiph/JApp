@@ -1,6 +1,9 @@
-from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.views import View
 from JApp.views.mixins import *
+from django.http import FileResponse
+from django.urls import reverse_lazy
+from django.core.exceptions import ImproperlyConfigured
+from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 
 
 class CreationView(TemplateNameMixin, CreateView):
@@ -69,3 +72,17 @@ class MessageRequiredDeletionView(MessageMixinDeleteView, DeletionView):
     DeletionView with messages.
     You need to define success_message and error_message in subclasses.
     """
+
+
+class ModelImageView(View):
+    """
+    A view that serves user uploaded images.
+    """
+    model = None
+
+    def get(self, request, pk):
+        if self.model is not None:
+            obj = self.model.objects.get(id=pk)
+            return FileResponse(open(obj.image.url[1:], 'rb'), as_attachment=True)
+        else:
+            raise ImproperlyConfigured('You need to configure the model field.')

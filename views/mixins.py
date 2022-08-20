@@ -1,7 +1,5 @@
 from django.contrib import messages
-from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
-from django.shortcuts import redirect
 
 
 class DashboardMixin(LoginRequiredMixin, PermissionRequiredMixin):
@@ -12,8 +10,15 @@ class MessageMixin:
     """
     Base mixin class to add success and error messages.
     """
-    success_message = str()
-    error_message = str()
+    action = 'created'
+    success_message = '{} was {} successfully.'
+    error_message = 'An error occurred while processing.'
+
+    def get_success_message(self):
+        return self.success_message.format(self.model._meta.verbose_name.title().capitalize(), self.action)
+
+    def get_error_message(self):
+        return self.error_message
 
 
 class MessageMixinCreateView(MessageMixin):
@@ -24,7 +29,7 @@ class MessageMixinCreateView(MessageMixin):
     def post(self, request, *args, **kwargs):
         try:
             response = super(MessageMixinCreateView, self).post(request, *args, **kwargs)
-            messages.success(request, self.success_message)
+            messages.success(request, self.get_success_message())
             return response
         except Exception as error:
             raise error
@@ -34,10 +39,11 @@ class MessageMixinUpdateView(MessageMixin):
     """
     A mixin for UpdateView to set success and error messages.
     """
+    action = 'updated'
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        messages.success(request, self.success_message)
+        messages.success(request, self.get_success_message())
         return super().post(request, *args, **kwargs)
 
 
@@ -45,9 +51,10 @@ class MessageMixinDeleteView(MessageMixin):
     """
     A mixin for DeleteView to set success and error messages.
     """
+    action = 'deleted'
 
     def post(self, request, *args, **kwargs):
-        messages.success(request, self.success_message)
+        messages.success(request, self.get_success_message())
         return self.delete(request, *args, **kwargs)
 
 

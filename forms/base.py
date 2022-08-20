@@ -9,6 +9,9 @@ class StyledModelForm(forms.ModelForm):
             try:
                 if field.widget.input_type == 'checkbox' or field.widget.input_type == 'radio':
                     field.widget.attrs['class'] = 'form-check-input'
+                elif field.widget.input_type == 'select':
+                    field.widget.attrs['class'] = 'form-select'
+                    field.widget.attrs['placeholder'] = field.label
                 else:
                     field.widget.attrs['class'] = 'form-control'
                     field.widget.attrs['placeholder'] = field.label

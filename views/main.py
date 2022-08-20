@@ -1,10 +1,10 @@
-from django.views.generic import TemplateView
-from JApp.views.mixins import DashboardMixin, LoginRequiredMixin
+from JApp.views.list import *
+from JApp.views.edit import *
 from JApp.views.create import *
 from JApp.views.detail import *
-from JApp.views.edit import *
 from JApp.views.delete import *
-from JApp.views.list import *
+from django.views.generic import TemplateView
+from JApp.views.mixins import DashboardMixin, LoginRequiredMixin
 
 
 # Create your views here.

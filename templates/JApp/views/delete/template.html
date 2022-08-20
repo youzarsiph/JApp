@@ -16,5 +16,7 @@
         {% translate 'Are you sure you want to delete?' %}
     </p>
     {% include 'JApp/includes/utilties/form.html' with form_tag=1 method='post' %}
-    {% include 'JApp/includes/utilties/submit.html' with cancel_url=url %}
+    {% block submit %}
+        {% include 'JApp/includes/utilties/submit.html' %}
+    {% endblock %}
 {% endblock %}
