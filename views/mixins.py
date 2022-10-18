@@ -108,17 +108,3 @@ class StaffUserRequiredMixin(UserPassesTestMixin):
 
     def test_func(self):
         return self.request.user.is_staff
-
-
-class TemplateNameMixin:
-    """
-    A mixin to set the template_name and it's extension.
-    """
-    app_name = 'JApp'
-    parent_dir = ''
-    extension = ''
-
-    def get_template_names(self):
-        template = self.app_name + '/views/' + self.parent_dir + self.model._meta.verbose_name.title().lower()
-        template += self.extension
-        return [template]

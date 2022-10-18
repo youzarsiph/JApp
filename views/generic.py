@@ -6,47 +6,37 @@ from django.core.exceptions import ImproperlyConfigured
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 
 
-class CreationView(TemplateNameMixin, CreateView):
+class CreationView(CreateView):
     """
     CreateView with template set automatically according to folder structure.
     """
-    parent_dir = 'create/'
-    extension = '.html'
 
 
-class DetailsView(TemplateNameMixin, DetailView):
+class DetailsView(DetailView):
     """
     DetailView with template set automatically according to folder structure.
     """
     pk_url_kwarg = 'id'
-    parent_dir = 'detail/'
-    extension = '.html'
 
 
-class ListingView(TemplateNameMixin, ListView):
+class ListingView(ListView):
     """
     ListView with template set automatically according to folder structure.
     """
-    parent_dir = 'list/'
-    extension = '.html'
 
 
-class EditView(TemplateNameMixin, UpdateView):
+class EditView(UpdateView):
     """
     UpdateView with template set automatically according to folder structure.
     """
     pk_url_kwarg = 'id'
-    parent_dir = 'edit/'
-    extension = '.html'
 
 
-class DeletionView(TemplateNameMixin, DeleteView):
+class DeletionView(DeleteView):
     """
     DeleteView with template set automatically according to folder structure.
     """
     pk_url_kwarg = 'id'
-    parent_dir = 'delete/'
-    extension = '.html'
 
     def get_success_url(self):
         return reverse_lazy('JApp:' + self.model._meta.verbose_name.lower() + '_list')
